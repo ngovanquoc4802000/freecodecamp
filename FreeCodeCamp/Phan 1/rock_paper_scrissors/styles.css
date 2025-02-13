@@ -7,7 +7,7 @@
 }
 
 :root {
-  --very-dark-blue: #060222;
+  --very-dark-blue: #08070e;
   --white: #ffffff;
   --yellow: #f1be32;
   --golden-yellow: #feac32;
@@ -17,6 +17,7 @@ body {
   background-color: var(--very-dark-blue);
   text-align: center;
   color: var(--white);
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 h1 {
