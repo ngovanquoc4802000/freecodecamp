@@ -1,5 +1,4 @@
 
-
  // cách 1:  const getAverage = (array) => array.reduce((acc,el) => acc + el) / array.length;
 /* cách 2:   const getAverage = (array) => {
   let result = 0
