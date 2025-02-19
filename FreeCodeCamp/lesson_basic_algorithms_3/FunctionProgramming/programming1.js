@@ -7,10 +7,9 @@ const range = (start, end) =>
     .fill(start)
     .map((element, index) => element + index);
 const charRange = (start, end) =>
-  range(start.charCodeAt(0), end.charCodeAt(0)).map(code =>
+  range(start.charCodeAt(0), end.charCodeAt(0)).map((code) =>
     String.fromCharCode(code)
   );
-
 
 // tìm số chẵn và lẻ
 const isEven = (num) => (num % 2 === 0 ? true : false);
@@ -40,22 +39,21 @@ const spreadsheetFunctions = {
 // chạy các chức năng bảnh tính của bạn
 // bạn cần có khả năng phân tích và đánh giá chuỗi đầu vào
 /// đây là 1 thời gian tuyệt vời để sử dụng
-    
 const evalFormula = (x, cells) => {
   const idToText = (id) => cells.find((cell) => cell.id === id).value; // xác định được value
-
   // bạn cần có khả năng khớp các phạm vi ô trong một công thức
   // phạm vi ô có thể trông giống như A1:B12 hoặc A3:25
   const rangeRegex = /([A-J])([1-9][0-9]?):([A-J])([1-9][0-9]?)/gi; // duyệt từng ô
+  // cho nó là số nguyên
 
-  const rangeFromString = (num1, num2) => range(parseInt(num1), parseInt(num2)); // cho nó là số nguyên
-
-  const elemValue = (num) => { 
-    const inner = (character) => {
-      return idToText(character + num);
-    }; 
-    return inner;
-  };
+  const rangeFromString = (num1, num2) => range(parseInt(num1), parseInt(num2));
+  // nếu có 1 hàm bộc bên trong 1 hàm thì chúng ta gọi 2 tham số cho 1 function đó
+  const elemValue = (num) => (character) => idToText(character + num);
+  // nếu có 1 hàm bộc bên trong 1 hàm thi chúng ta gọi 2 tham số cho 1 function đó
+  const addCharacters = (character1) => (character2) => (num) =>
+    // bạn có thể truyền elemValue(num) vào map
+    charRange(character1, character2).map(elemValue(num));
+  const rangeExpanded = addCharacters.replace(rangeRegex,x)
 };
 
 const update = (event) => {
@@ -65,8 +63,6 @@ const update = (event) => {
   if (!value.includes(element.id) && value.startsWith("=")) {
   }
 };
-
-
 
 //window là đối tượng cửa sổ chung đại diện cho cửa sổ trình duyệt
 window.onload = () => {
