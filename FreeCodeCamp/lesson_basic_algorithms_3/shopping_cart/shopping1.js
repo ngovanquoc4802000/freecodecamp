@@ -123,7 +123,7 @@ class ShoppingCart {
     // nhắm đến id trong 1 phần tử trong mảng
     this.items.forEach((dessert) => {
       totalCountPerProduct[dessert.id] =
-        (totalCountPerProduct[dessert.id] || 0) + 1;  
+        (totalCountPerProduct[dessert.id] || 0) + 1;
     });
     const currentProductCount = totalCountPerProduct[product.id];
     const currentProductCountSpan = document.getElementById(
@@ -151,9 +151,9 @@ class ShoppingCart {
     const subTotal = this.items.reduce((acc, el) => acc + el.price, 0);
     const taxes = this.calculatorTaxes(subTotal);
     const total = subTotal + taxes;
-    cartSubTotal.textContent = `$${subTotal}`;
-    cartTaxes.textContent = `$${taxes}`;
-    cartTotal.textContent = `$${total}`;
+    cartSubTotal.textContent = `$${subTotal.toFixed(2)}`;
+    cartTaxes.textContent = `$${taxes.toFixed(2)}`;
+    cartTotal.textContent = `$${total.toFixed(2)}`;
   }
   clearShopping() {
     productsContainer.innerHTML = ``;
