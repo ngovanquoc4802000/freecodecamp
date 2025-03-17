@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <link rel="icon" type="image/png" href="https://cdn.freecodecamp.org/universal/favicons/favicon.ico">
+  <title>Pokemon Proxy</title>
+</head>
+
+<body>
+  <main>
+    <img class="freecodecamp-logo" src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg"
+      alt="freecodecamp-logo">
+    <h1>Pokémon Search App</h1>
+    <div class="container">
+      <form id="search-form" role="search" action="">
+        <label for="search-input">Search for Pokémon Name or ID:</label>
+        <input name="Pokemon" id="search-input" type="text" required />
+        <button id="search-button">Search</button>
+      </form>
+      <div class="output">
+        <div class="top-container">
+          <div class="name-and-id">
+            <span id="pokemon-name"></span>
+            <span id="pokemon-id"></span>
+          </div>
+          <div class="size">
+            <span id="weight"></span>
+            <span id="height"></span>
+          </div>
+          <div id="sprite-container" class="sprite-container"></div>
+          <div id="types"></div>
+        </div>
+        <div class="bottom-container">
+          <table>
+            <tbody>
+              <tr>
+                <th>Base</th>
+                <th>Stats</th>
+              </tr>
+              <tr>
+                <td>HP: </td>
+                <td id="hp"></td>
+              </tr>
+              <tr>
+                <td>Attack:</td>
+                <td id="attack"></td>
+              </tr>
+              <tr>
+                <td>Defense:</td>
+                <td id="defense"></td>
+              </tr>
+              <tr>
+                <td>Sp. Attack:</td>
+                <td id="special-attack"></td>
+              </tr>
+              <tr>
+                <td>Sp. Defense:</td>
+                <td id="special-defense"></td>
+              </tr>
+              <tr>
+                <td>Speed:</td>
+                <td id="speed" class="speed"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+ <script src="pokemon.js"></script>
+
+</html>
