@@ -1,0 +1,61 @@
+.App {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+}
+.side-bar {
+  background-color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Để bo tròn góc hoạt động tốt */
+}
+
+.sidebar-title {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-bottom: 1px solid #444;
+}
+.category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-item {
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.3s ease;
+}
+
+.category-item:last-child {
+  border-bottom: none;
+}
+
+.category-item:hover {
+  background-color: #f9f9f9;
+}
+
+.category-link {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.category-link:hover {
+  color: #007bff; /* Màu khi hover */
+}
+/* content */
+.content {
+  background-color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}

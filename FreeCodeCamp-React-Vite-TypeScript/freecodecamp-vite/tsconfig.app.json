@@ -22,5 +22,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": ["src", "components/certificate-2-convert-parseInt-so-la-ma/parseInt.tsx"]
 }
