@@ -1,61 +1,566 @@
+@charset "UTF-8";
 .App {
   display: grid;
   grid-template-columns: 300px 1fr;
 }
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f4f4;
-}
-.side-bar {
+.App .side-bar {
   background-color: #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   overflow: hidden; /* Để bo tròn góc hoạt động tốt */
 }
-
-.sidebar-title {
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border-bottom: 1px solid #444;
-}
-.category-list {
+.App .side-bar .category-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
-.category-item {
+.App .side-bar .category-list .category-item {
   padding: 15px 20px;
   border-bottom: 1px solid #eee;
-  transition: background-color 0.3s ease;
+  position: relative;
+  color: #ffb41f;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
-
-.category-item:last-child {
+.App .side-bar .category-list .category-item::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #ff4b1f;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+.App .side-bar .category-list .category-item:last-child {
   border-bottom: none;
 }
-
-.category-item:hover {
-  background-color: #f9f9f9;
+.App .side-bar .category-list .category-item:hover {
+  color: #ff7f50;
 }
-
-.category-link {
+.App .side-bar .category-list .category-item:hover::before {
+  transform: scaleX(1);
+}
+.App .side-bar .category-list .category-item .category-link {
   display: block;
   text-decoration: none;
   color: #333;
   font-weight: 500;
 }
 
-.category-link:hover {
-  color: #007bff; /* Màu khi hover */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
 /* content */
 .content {
-  background-color: #e0e0e0;
+  background-color: #0a0a23;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
 }
+
+/* App palindrome */
+.container-palindrome {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.container-palindrome .freecodecamp-logo {
+  height: 30px;
+  margin-bottom: 20px;
+}
+.container-palindrome .palindrome-div {
+  width: min(100vw, 450px);
+  min-height: 100px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  margin: 10px 0;
+  background-color: white;
+  box-shadow: 0 6px 6px #002ead;
+}
+.container-palindrome .palindrome-div label {
+  color: #0a0a23;
+  margin-bottom: 20px;
+}
+.container-palindrome .palindrome-div .palindrome-input {
+  height: 30px;
+  width: 250px;
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 10px;
+  border: none;
+  border-bottom: 2px solid #5a01a7;
+}
+.container-palindrome .palindrome-div #check-btn {
+  width: 90px;
+  border: none;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #5a01a7;
+  color: #fff;
+  cursor: pointer;
+}
+.container-palindrome .palindrome-div .result-div {
+  overflow-y: auto;
+  word-wrap: break-word;
+  min-height: 50px;
+  color: black;
+}
+.container-palindrome .palindrome-definition-div {
+  width: min(100vw, 450px);
+  font-size: 1.3rem;
+  min-height: 140px;
+  background-color: #00471b;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container-palindrome .palindrome-definition-div .palindrome-definition {
+  vertical-align: middle;
+  text-align: center;
+}
+.container-palindrome .palindrome-definition-div #value {
+  color: black;
+}
+
+/* Telephone */
+.telephone {
+  --phone-colors: #dfdfe2;
+  --center-text: center;
+  --gray-00: #fff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #0a0a23;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 40px 10px;
+}
+.telephone .freecodecamp-logo {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 20px;
+}
+.telephone h1 {
+  color: white;
+  width: 100%;
+  max-width: 480px;
+  margin: 15px 0;
+  text-align: var(--center-text);
+}
+.telephone .phone-container {
+  position: relative;
+  background-color: var(--phone-colors);
+  width: 250px;
+  height: 460px;
+  margin: 30px auto;
+  border-radius: 15px;
+  border: 15px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.telephone .phone-container .phone-background {
+  background-color: black;
+  width: 100%;
+  height: 25px;
+}
+.telephone .phone-container .phone-background .phone-camera {
+  background-color: var(--phone-colors);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: auto;
+}
+.telephone .phone-container label {
+  margin: 10px auto 5px;
+}
+.telephone .phone-container #user-input {
+  display: block;
+  margin: 10px auto;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 10px;
+  text-align: var(--center-text);
+  width: 90%;
+  height: 42px;
+  font-size: 16px;
+}
+.telephone .phone-container .phone-footer {
+  background-color: black;
+  width: 100%;
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.telephone .phone-container .phone-footer .btn-styles {
+  cursor: pointer;
+  width: 100px;
+  margin: 10px;
+  color: #0a0a23;
+  font-size: 18px;
+  background-color: #ffffff;
+  background-image: linear-gradient(#ffffff, #928d86);
+  border-color: #ffffff;
+  border-width: 3px;
+}
+
+/* App Convert  */
+.convert {
+  min-height: 100vh;
+  padding: 50px 20px;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  color: #f5f6f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.convert .freecodecamp-logo {
+  height: 30px;
+  margin-bottom: 20px;
+}
+.convert h1 {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 350px;
+  font-family: "Castoro Titling", cursive;
+}
+.convert form {
+  color: #f5f6f7;
+  margin: auto 25px;
+  border: 3px solid #f5f6f7;
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+  background-color: #3b3b4f;
+}
+.convert form fieldset {
+  border: 0 none;
+  height: 100%;
+  padding: 25px;
+  margin: 10px 20px;
+}
+.convert form fieldset label {
+  display: inline-block;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.convert form fieldset input {
+  display: block;
+  font-size: 2.5rem;
+  width: 100%;
+  height: 60px;
+  padding: 6px 12px;
+  margin: 10px 0;
+  line-height: 1.4;
+  color: white;
+  background-color: #0a0a23;
+  border: 1px solid #f5f6f7;
+}
+.convert form fieldset button {
+  cursor: pointer;
+  margin-top: 15px;
+  text-decoration: none;
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  border: 3px solid #feac32;
+  padding: 10px 16px;
+  font-size: 23px;
+  width: 100%;
+}
+.convert form .output {
+  background-color: #3b3b4f;
+  border: 3px solid #f5f6f7;
+  font-size: 2.5rem;
+  width: 90%;
+  max-width: 500px;
+  min-height: 55px;
+  margin-top: 25px;
+  padding: 15px;
+  overflow-wrap: break-word;
+  text-align: center;
+}
+.convert form .alert {
+  font-size: 2rem;
+  background-color: #ffadad;
+  border: 3px solid #850000;
+  color: #850000;
+}
+
+/* App Cash */
+.cash {
+  --light-gray: #dfdfe2;
+  --dark-blue: #0a0a23;
+  background-color: var(--dark-blue);
+  color: var(--light-gray);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 40px 10px;
+}
+.cash .freecodecamp-logo {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 20px;
+}
+.cash h1 {
+  font-size: 2.5rem;
+  margin: 20px 0;
+  text-align: center;
+}
+.cash #change-due {
+  text-align: left;
+  font-size: 1.2rem;
+}
+.cash .input-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 10px 0 20px;
+}
+.cash .input-div label {
+  font-size: 18px;
+}
+.cash .input-div .user-input {
+  height: 30px;
+  padding: 10px;
+  margin: 10px;
+  font-size: 15px;
+}
+.cash .input-div .check-btn-styles {
+  cursor: pointer;
+  width: 100px;
+  height: 30px;
+  margin: 10px;
+  color: #0a0a23;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #feac32;
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  border-color: #feac32;
+  border-width: 3px;
+}
+.cash .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cash .container .price-screen {
+  border: 10px solid #99c9ff;
+  background-color: black;
+  height: 50px;
+  width: 200px;
+  margin-left: -40px;
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.cash .container .connector {
+  margin-left: -20px;
+  background-color: #99c9ff;
+  height: 30px;
+  width: 40px;
+}
+.cash .container .top-register {
+  display: flex;
+  justify-content: space-around;
+  border-radius: 35px 35px 0 0;
+  padding-top: 20px;
+  background-color: #99c9ff;
+  height: 250px;
+  width: 325px;
+}
+.cash .container .top-register .btns-container {
+  width: 25%;
+}
+.cash .container .top-register .btns-container .btn {
+  border-radius: 10%;
+  border: none;
+  width: 20px;
+  height: 20px;
+  background-color: black;
+}
+.cash .container .top-register #cash-drawer-display {
+  font-size: 1.1rem;
+  background-color: white;
+  width: 55%;
+  height: 95%;
+  color: black;
+  padding: 10px;
+}
+.cash .container .bottom-register {
+  background-color: #99c9ff;
+  height: 50px;
+  width: 325px;
+  margin-top: 10px;
+}
+
+/* App Pokemon */
+.pokemon {
+  color: #0a0a23;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.pokemon .freecodecamp-logo {
+  height: 30px;
+  margin: 25px 0;
+}
+.pokemon h1 {
+  font-size: 2rem;
+  color: #fff;
+}
+.pokemon .container {
+  margin: 25px 0;
+  background-color: #f5f6f7;
+  border: 1px solid #f5f6f7;
+  border-radius: 15px;
+  box-shadow: 10px 10px 0px 0px rgba(223, 220, 220, 0.75);
+}
+.pokemon .container #search-form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 10px 0;
+  padding: 5px;
+  border-radius: 8px 8px 0 0;
+  gap: 10px;
+}
+.pokemon .container #search-form label {
+  align-self: center;
+}
+.pokemon .container #search-form #search-input {
+  height: 40px;
+  padding-left: 10px;
+  width: 200px;
+}
+.pokemon .container #search-form #search-button {
+  padding: 14px 0;
+  width: 80px;
+  border-radius: 20px;
+  text-align: center;
+  background-color: #7f21ab;
+  color: #f5f6f7;
+  border: none;
+}
+.pokemon .container .output {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  padding: 5px;
+  flex-direction: column;
+  align-items: center;
+}
+.pokemon .container .output .top-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 325px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f0f1f7;
+}
+.pokemon .container .output .top-container .name-and-id {
+  height: 28px;
+  font-size: 1.1em;
+  text-transform: capitalize;
+  margin-bottom: 5px;
+}
+.pokemon .container .output .top-container .size {
+  height: 22px;
+  font-size: 0.85rem;
+}
+.pokemon .container .output .top-container .sprite-container {
+  flex-grow: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pokemon .container .output .top-container #types {
+  min-height: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 5px;
+}
+.pokemon .container .output .bottom-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 325px;
+}
+.pokemon .container .output .bottom-container table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  font-size: 1 rem;
+  color: #f5f6f7;
+  background-color: #7f21ab;
+}
+.pokemon .container .output .bottom-container table tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  unicode-bidi: isolate;
+  border-color: inherit;
+}
+.pokemon .container .output .bottom-container table tbody tr {
+  border-bottom: 5px solid #f5f6f7;
+}
+.pokemon .container .output .bottom-container table tbody tr td,
+.pokemon .container .output .bottom-container table tbody tr th {
+  text-align: center;
+  padding: 8px;
+}
+.pokemon .container .output .bottom-container table tbody tr th:nth-child(even),
+.pokemon .container .output .bottom-container table tbody tr td:nth-child(even) {
+  border-left: 5px solid #f5f6f7;
+}
+.pokemon .container #sprite {
+  width: 180px;
+}
+@media screen and (min-width: 550px) {
+  .pokemon .container .container {
+    width: 450px;
+  }
+}
+@media screen and (min-width: 550px) {
+  .pokemon .container #search-form,
+  .pokemon .container .top-container,
+  .pokemon .container .bottom-container {
+    width: 95%;
+  }
+}
+
+/*# sourceMappingURL=App.css.map */

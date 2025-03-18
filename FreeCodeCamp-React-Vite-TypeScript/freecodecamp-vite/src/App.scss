@@ -1,0 +1,556 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.App {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  .side-bar {
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Để bo tròn góc hoạt động tốt */
+    .category-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      .category-item {
+        padding: 15px 20px;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        color: #ffb41f;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: #ff4b1f;
+          transform: scaleX(0);
+          transition: transform 0.3s ease;
+        }
+        &:last-child {
+          border-bottom: none;
+        }
+        &:hover {
+          color: #ff7f50;
+        }
+        &:hover::before {
+          transform: scaleX(1);
+        }
+        .category-link {
+          display: block;
+          text-decoration: none;
+          color: #333;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+/* content */
+.content {
+  background-color: #0a0a23;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+/* App palindrome */
+.container-palindrome {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .freecodecamp-logo {
+    height: 30px;
+    margin-bottom: 20px;
+  }
+  .palindrome-div {
+    width: min(100vw, 450px);
+    min-height: 100px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin: 10px 0;
+    background-color: white;
+    box-shadow: 0 6px 6px #002ead;
+    label {
+      color: #0a0a23;
+      margin-bottom: 20px;
+    }
+    .palindrome-input {
+      height: 30px;
+      width: 250px;
+      text-align: center;
+      font-size: 1.2rem;
+      margin: 10px;
+      border: none;
+      border-bottom: 2px solid #5a01a7;
+    }
+    #check-btn {
+      width: 90px;
+      border: none;
+      padding: 10px;
+      border-radius: 15px;
+      background-color: #5a01a7;
+      color: #fff;
+      cursor: pointer;
+    }
+    .result-div {
+      overflow-y: auto;
+      word-wrap: break-word;
+      min-height: 50px;
+      color: black;
+    }
+  }
+  .palindrome-definition-div {
+    width: min(100vw, 450px);
+    font-size: 1.3rem;
+    min-height: 140px;
+    background-color: #00471b;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .palindrome-definition {
+      vertical-align: middle;
+      text-align: center;
+    }
+    #value {
+      color: black;
+    }
+  }
+}
+/* Telephone */
+.telephone {
+  --phone-colors: #dfdfe2;
+  --center-text: center;
+  --gray-00: #fff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #0a0a23;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 40px 10px;
+  .freecodecamp-logo {
+    width: 100%;
+    height: 30px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    color: white;
+    width: 100%;
+    max-width: 480px;
+    margin: 15px 0;
+    text-align: var(--center-text);
+  }
+  .phone-container {
+    position: relative;
+    background-color: var(--phone-colors);
+    width: 250px;
+    height: 460px;
+    margin: 30px auto;
+    border-radius: 15px;
+    border: 15px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .phone-background {
+      background-color: black;
+      width: 100%;
+      height: 25px;
+      .phone-camera {
+        background-color: var(--phone-colors);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin: auto;
+      }
+    }
+    label {
+      margin: 10px auto 5px;
+    }
+    #user-input {
+      display: block;
+      margin: 10px auto;
+      padding: 5px;
+      border: 1px solid black;
+      border-radius: 10px;
+      text-align: var(--center-text);
+      width: 90%;
+      height: 42px;
+      font-size: 16px;
+    }
+    .phone-footer {
+      background-color: black;
+      width: 100%;
+      height: 40px;
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .btn-styles {
+        cursor: pointer;
+        width: 100px;
+        margin: 10px;
+        color: #0a0a23;
+        font-size: 18px;
+        background-color: #ffffff;
+        background-image: linear-gradient(#ffffff, #928d86);
+        border-color: #ffffff;
+        border-width: 3px;
+      }
+    }
+  }
+}
+/* App Convert  */
+.convert {
+  min-height: 100vh;
+  padding: 50px 20px;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  color: #f5f6f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .freecodecamp-logo {
+    height: 30px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 350px;
+    font-family: "Castoro Titling", cursive;
+  }
+  form {
+    color: #f5f6f7;
+    margin: auto 25px;
+    border: 3px solid #f5f6f7;
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+    background-color: #3b3b4f;
+    fieldset {
+      border: 0 none;
+      height: 100%;
+      padding: 25px;
+      margin: 10px 20px;
+      label {
+        display: inline-block;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      input {
+        display: block;
+        font-size: 2.5rem;
+        width: 100%;
+        height: 60px;
+        padding: 6px 12px;
+        margin: 10px 0;
+        line-height: 1.4;
+        color: white;
+        background-color: #0a0a23;
+        border: 1px solid #f5f6f7;
+      }
+      button {
+        cursor: pointer;
+        margin-top: 15px;
+        text-decoration: none;
+        background-image: linear-gradient(#fecc4c, #ffac33);
+        border: 3px solid #feac32;
+        padding: 10px 16px;
+        font-size: 23px;
+        width: 100%;
+      }
+    }
+    .output {
+      background-color: #3b3b4f;
+      border: 3px solid #f5f6f7;
+      font-size: 2.5rem;
+      width: 90%;
+      max-width: 500px;
+      min-height: 55px;
+      margin-top: 25px;
+      padding: 15px;
+      overflow-wrap: break-word;
+      text-align: center;
+    }
+    .alert {
+      font-size: 2rem;
+      background-color: #ffadad;
+      border: 3px solid #850000;
+      color: #850000;
+    }
+  }
+}
+/* App Cash */
+.cash {
+  --light-gray: #dfdfe2;
+  --dark-blue: #0a0a23;
+  background-color: var(--dark-blue);
+  color: var(--light-gray);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 40px 10px;
+  .freecodecamp-logo {
+    width: 100%;
+    height: 30px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: 2.5rem;
+    margin: 20px 0;
+    text-align: center;
+  }
+  #change-due {
+    text-align: left;
+    font-size: 1.2rem;
+  }
+  .input-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 10px 0 20px;
+    label {
+      font-size: 18px;
+    }
+    .user-input {
+      height: 30px;
+      padding: 10px;
+      margin: 10px;
+      font-size: 15px;
+    }
+    .check-btn-styles {
+      cursor: pointer;
+      width: 100px;
+      height: 30px;
+      margin: 10px;
+      color: #0a0a23;
+      font-size: 18px;
+      font-weight: bold;
+      background-color: #feac32;
+      background-image: linear-gradient(#fecc4c, #ffac33);
+      border-color: #feac32;
+      border-width: 3px;
+    }
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .price-screen {
+      border: 10px solid #99c9ff;
+      background-color: black;
+      height: 50px;
+      width: 200px;
+      margin-left: -40px;
+      color: white;
+      font-size: 1.2rem;
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+    .connector {
+      margin-left: -20px;
+      background-color: #99c9ff;
+      height: 30px;
+      width: 40px;
+    }
+    .top-register {
+      display: flex;
+      justify-content: space-around;
+      border-radius: 35px 35px 0 0;
+      padding-top: 20px;
+      background-color: #99c9ff;
+      height: 250px;
+      width: 325px;
+      .btns-container {
+        width: 25%;
+        .btn {
+          border-radius: 10%;
+          border: none;
+          width: 20px;
+          height: 20px;
+          background-color: black;
+        }
+      }
+      #cash-drawer-display {
+        font-size: 1.1rem;
+        background-color: white;
+        width: 55%;
+        height: 95%;
+        color: black;
+        padding: 10px;
+      }
+    }
+    .bottom-register {
+      background-color: #99c9ff;
+      height: 50px;
+      width: 325px;
+      margin-top: 10px;
+    }
+  }
+}
+/* App Pokemon */
+.pokemon {
+  color: #0a0a23;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .freecodecamp-logo {
+    height: 30px;
+    margin: 25px 0;
+  }
+  h1 {
+    font-size: 2rem;
+    color: #fff;
+  }
+  .container {
+    margin: 25px 0;
+    background-color: #f5f6f7;
+    border: 1px solid #f5f6f7;
+    border-radius: 15px;
+    box-shadow: 10px 10px 0px 0px rgba(223, 220, 220, 0.75);
+    #search-form {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 10px 0;
+      padding: 5px;
+      border-radius: 8px 8px 0 0;
+      gap: 10px;
+      label {
+        align-self: center;
+      }
+      #search-input {
+        height: 40px;
+        padding-left: 10px;
+        width: 200px;
+      }
+      #search-button {
+        padding: 14px 0;
+        width: 80px;
+        border-radius: 20px;
+        text-align: center;
+        background-color: #7f21ab;
+        color: #f5f6f7;
+        border: none;
+      }
+    }
+    .output {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+      padding: 5px;
+      flex-direction: column;
+      align-items: center;
+      .top-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 325px;
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #f0f1f7;
+        .name-and-id {
+          height: 28px;
+          font-size: 1.1em;
+          text-transform: capitalize;
+          margin-bottom: 5px;
+        }
+        .size {
+          height: 22px;
+          font-size: 0.85rem;
+        }
+        .sprite-container {
+          flex-grow: 2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        #types {
+          min-height: 30px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          gap: 5px;
+        }
+      }
+      .bottom-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: 325px;
+        table {
+          border-collapse: collapse;
+          border-spacing: 0;
+          width: 100%;
+          font-size: 1 rem;
+          color: #f5f6f7;
+          background-color: #7f21ab;
+          tbody {
+            display: table-row-group;
+            vertical-align: middle;
+            unicode-bidi: isolate;
+            border-color: inherit;
+            tr {
+              border-bottom: 5px solid #f5f6f7;
+              td,
+              th {
+                text-align: center;
+                padding: 8px;
+              }
+              th:nth-child(even),
+              td:nth-child(even) {
+                border-left: 5px solid #f5f6f7;
+              }
+            }
+          }
+        }
+      }
+    }
+    #sprite {
+      width: 180px;
+    }
+    @media screen and (min-width: 550px) {
+      .container {
+        width: 450px;
+      }
+    }
+    @media screen and (min-width: 550px) {
+      #search-form,
+      .top-container,
+      .bottom-container {
+        width: 95%;
+      }
+    }
+  }
+}

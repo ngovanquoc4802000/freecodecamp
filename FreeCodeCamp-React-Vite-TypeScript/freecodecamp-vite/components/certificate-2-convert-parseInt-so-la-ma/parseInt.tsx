@@ -1,6 +1,6 @@
 function ParseInt() {
   return (
-    <main>
+    <main className="convert">
       <img
         className="freecodecamp-logo"
         src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg"

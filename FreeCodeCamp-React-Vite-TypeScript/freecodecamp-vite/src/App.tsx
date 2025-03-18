@@ -3,7 +3,9 @@ import "./App.css";
 import "../components/certificate-1-Palindrome/padindrome";
 import Palindrome from "../components/certificate-1-Palindrome/padindrome";
 import ParseInt from "../components/certificate-2-convert-parseInt-so-la-ma/parseInt";
-
+import Telephone from "../components/certificate-3-number-telephone-validator/telephone";
+import Cash from "../components/certificate-4-cash-register/cash";
+import Pokemon from "../components/certificate-5-Api-Pokemon/Pokemon";
 
 function App() {
   return (
@@ -12,36 +14,42 @@ function App() {
         <aside className="side-bar">
           <ul className="category-list">
             <li className="category-item">
-              <Link to="/palindrome">Palindrome</Link>
+              <Link className="category-link" to="/palindrome">
+                Palindrome
+              </Link>
             </li>
             <li className="category-item">
-              <Link to="/parseInt">Convert ParseInt So La ma</Link>
+              <Link className="category-link" to="/parseInt">
+                Convert ParseInt So La ma
+              </Link>
             </li>
             <li className="category-item">
-              <a href="#" className="category-link">
+              <Link className="category-link" to="/telephone">
                 Number Telephone Validator
-              </a>
+              </Link>
             </li>
             <li className="category-item">
-              <a href="#" className="category-link">
+              <Link className="category-link" to="/cash">
                 Cash Register
-              </a>
+              </Link>
             </li>
             <li className="category-item">
-              <a href="#" className="category-link">
+              <Link className="category-link" to="/ApiPokemon">
                 Api Pokemon
-              </a>
+              </Link>
             </li>
           </ul>
         </aside>
         <section className="content">
-          <h1>content</h1>
+          <Routes>
+            <Route path="/palindrome" element={<Palindrome />} />
+            <Route path="/parseInt" element={<ParseInt />} />
+            <Route path="/telephone" element={<Telephone />} />
+            <Route path="/cash" element={<Cash />} />
+            <Route path="/ApiPokemon" element={<Pokemon />} />
+          </Routes>
         </section>
       </div>
-      <Routes>
-        <Route path="/palindrome" element={<Palindrome />} />
-        <Route path="/parseInt" element={<ParseInt />} />
-      </Routes>
     </BrowserRouter>
   );
 }
