@@ -1,23 +1,39 @@
-import React from "react";
-import { SetStateAction, useState } from "react";
+import React, { useState } from "react";
+/* begin
+- input : value;
+- logic: xử lý regex làm sao cho những string , nếu nó reverse bằng nhau thì ngược lại;
+ + nếu click bằng palindrome thì is valid và ngược lại
+- hiển thị kết quả;
+end
+*/
 
 function Palindrome() {
   const [value, setValue] = useState("");
-  const handleChange = (e: { target: { value: SetStateAction<string> } }) => {
+  const [showResult, setShowResult] = useState("");
+
+  const cleanInputString = (str: string) => {
+    const regex = /[^a-zA-z0-9]/g;
+    return str.replace(regex, "");
+  };
+
+  const handleOnchange = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
     setValue(e.target.value);
   };
-  const handleCheck = () => {
-    const regex = /[^a-zA-Z0-9]/g;
-    const textInput = value.replace(regex, "");
-    const cleanInput = textInput.toLocaleLowerCase();
-    const upstream = cleanInput.split("").reverse().join("");
-    if (textInput === "") {
-      alert("Please input a value");
-    } else if (cleanInput === upstream) {
-      return   <div className="results-div" id="result">{value}</div>;
-    } else {
-      return <div>{value} is not a palindrome</div>;
+
+  const handleClick = () => {
+    if (value === "") {
+      return alert("Please input");
     }
+
+    const inputValue = cleanInputString(value).toLocaleLowerCase();
+    const upstream = inputValue.split("").reverse().join("");
+    const check =
+      inputValue === upstream
+        ? setShowResult(`${value} is a palindrome`)
+        : setShowResult(`${value} is not a palindrome`);
+    return check;
   };
   return (
     <main className="container-palindrome">
@@ -32,16 +48,22 @@ function Palindrome() {
           Enter in text to check for a palindrome:{" "}
         </label>
         <input
-          onChange={handleChange}
+          onChange={handleOnchange}
           type="text"
           value={value}
           className="palindrome-input"
           id="text-input"
         />
-        <button onClick={handleCheck} id="check-btn">
+        <button onClick={handleClick} id="check-btn">
           Check
         </button>
-        <div className="results-div" id="result"></div>
+        <div
+          style={{ color: "red", fontWeight: "bold" }}
+          className="results-div"
+          id="result"
+        >
+          {showResult}
+        </div>
       </div>
       <div className="palindrome-definition-div">
         <p className="palindrome-definition">
