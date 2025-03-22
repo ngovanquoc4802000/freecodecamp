@@ -1,4 +1,7 @@
 
+import React from 'react';
+
+
 function CashRegister() {
   return (
     <main className="cash">
