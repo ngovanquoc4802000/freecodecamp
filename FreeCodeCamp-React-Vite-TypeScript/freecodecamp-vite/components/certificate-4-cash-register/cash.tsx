@@ -1,19 +1,7 @@
-import { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
+type CurrencyUnit = [string, number];
 
-type CurrencyName =
-  | "PENNY"
-  | "NICKEL"
-  | "DIME"
-  | "QUARTER"
-  | "ONE"
-  | "FIVE"
-  | "TEN"
-  | "TWENTY"
-  | "ONE HUNDRED";
-type CurrencyTuple = [CurrencyName, number];
-type cidCash = CurrencyTuple[];
-
-const cid: cidCash = [
+const cid: CurrencyUnit[] = [
   ["PENNY", 1.01],
   ["NICKEL", 2.05],
   ["DIME", 3.1],
@@ -25,71 +13,108 @@ const cid: cidCash = [
   ["ONE HUNDRED", 100],
 ];
 
-interface resultCash {
-  status: string;
-  change: never[];
+interface Result {
+  status?: "OPEN" | "CLOSED" | "INSUFFICIENT_FUNDS";
+  change?: CurrencyUnit[];
 }
-const result: resultCash = {
-  status: "OPEN",
-  change: [],
-};
 
 const price: number = 3.26;
 function CashRegister() {
   const [value, setValue] = useState<number>(0);
   const [change, setChange] = useState<string>("");
-  const [showResult, setShowResult] = useState<object>(result);
+  const [changeMessage, setChangeMessage] = useState<string>("");
+  const [showResult, setShowResult] = useState<Result>({
+    status: "OPEN",
+    change: [],
+  });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
-    const numeric = inputValue === "" ? 0 : parseFloat(inputValue);
+    const numeric: number = inputValue === "" ? 0 : parseFloat(inputValue);
     if (!isNaN(numeric)) {
       setValue(numeric);
+      return;
     }
   };
 
   const handlePurchase = () => {
-    /* để giá tiền khách hàng và giá trong két về tròn số 100 */
-    const cashInCents = Math.round(Number(value) * 100);
-    const priceInCents = Math.round(price * 100);
-    console.log(cashInCents);
-    /* Điều kiện nếu số tiền khacsh khách hàng đưa ít hơn giá tiền thối */
-    console.log(priceInCents);
+    const cashInCents: number = isNaN(Number(value))
+      ? 0
+      : Math.round(Number(value) * 100);
+    const priceInCents: number = Math.round(price * 100);
+    const changeDue = cashInCents - priceInCents;
+
     if (cashInCents < priceInCents) {
       alert("Customer does not have enough money to purchase the item");
       return;
     } else {
-      setValue(value);
+      setValue(0);
     }
-    /* điều kiện nếu số tiền khách hàng bằng số tiền trong két */
     if (cashInCents === priceInCents) {
       setChange("No change due - customer paid with exact cash");
+      return;
     } else {
-      setValue(value);
+      setValue(0);
     }
-    /* tiền khách - trừ tiền thối */
-    const changeDue = cashInCents - priceInCents;
-    const revesedCid: CurrencyTuple[] = [...cid]
+
+    const reversedCid: [string, number][] = [...cid]
       .reverse()
       .map(([item, amount]) => [item, Math.round(amount * 100)]);
+    /* chia tiền thối thành các mệnh giá */
     const denominations: number[] = [10000, 2000, 1000, 500, 100, 25, 10, 5, 1];
-    if (
+    /*  */
+    const totalCid: number = reversedCid.reduce(
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      changeDue > revesedCid.reduce((prev, [_, amount]) => prev + amount, 0)
-    ) {
-      setShowResult({ status: "INSUFFICIENT_FUNDS", change: [] });
+      (prev: number, [_, amount]: [string, number]) => prev + amount,
+      0
+    );
+    if (totalCid < changeDue) {
+      setShowResult({
+        status: "INSUFFICIENT_FUNDS",
+        change: [],
+      });
       return;
+    } else {
+      setValue(0);
     }
-    for(let i = 0; i < revesedCid.length; i++) {
-      if(changeDue >= denominations[i] && changeDue >0) {
-        const [denominations,amount] = revesedCid[i];
-        const possibleChange = Math.min(amount, changeDue);
-        const count = Math.floor(possibleChange / denominations[i]);
-            const amountInChange = count * denominations[i];
+    for (let i: number = 0; i < reversedCid.length; i++) {
+      /* Nếu tiền thối còn lại lớn hơn mệnh giá hiện tại */
+      if (changeDue >= denominations[i] && changeDue > 0) {
+        const [denomationName, amount]: [string, number] = reversedCid[i];
+        /* xác định số tiền tối đa có thể thối */
+        const possibleChange: number = Math.min(amount, changeDue);
+        /* tính số lượng tờ tiền cần thối */
+        const count: number = Math.floor(possibleChange / denominations[i]);
+        /* tính tổng số tiền thối của mệnh giá này */
+        const sumInchangeDue: number = count * denominations[i];
+        const updateChange: [string, number][] = [];
+        if (count > 0) {
+          updateChange.push([denomationName, sumInchangeDue / 100]);
+          // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+          changeDue - sumInchangeDue;
+        }
+        setShowResult({
+          ...showResult,
+          change: updateChange,
+        });
       }
     }
-  };
 
+    formatResult(showResult.status, showResult.change);
+  };
+  const formatResult = (
+    status: string | undefined,
+    change: CurrencyUnit[] | undefined
+  ) => {
+    const formattedChange = change
+      ?.map(
+        ([denominationName, amount]) =>
+          `${denominationName}: ${amount.toFixed(2)}`
+      )
+      .join(", ");
+    setChangeMessage(`Status : ${status}. Change: ${formattedChange}`);
+  };
+  console.log(showResult);
   return (
     <main className="cash">
       <img
@@ -99,7 +124,15 @@ function CashRegister() {
       />
       <h1>Cash Register Project</h1>
       <div id="change-due">
-        <p>{change}</p>
+          <div>
+            <p> {changeMessage}</p>
+            {showResult.change?.map(([name, amount]) => (
+              <p key={name}>
+                {name} : ${amount}
+              </p>
+            ))}
+          </div>
+        <p style={{ color: "red" }}>{change}</p>
       </div>
       <div className="input-div">
         <label htmlFor="cash">Enter cash from customer:</label>
@@ -141,14 +174,11 @@ function CashRegister() {
             <p>
               <strong>Change in drawer:</strong>
             </p>
-            <p>Pennies: $1.01</p>
-            <p>Nickels: $2.05</p>
-            <p>Dimes: $3.1</p>
-            <p>Quarters $</p>
-            <p>Ones: $55</p>
-            <p>Fives: $20</p>
-            <p>Twenties: $60</p>
-            <p>Hundreds: $100</p>
+            {cid.map(([denomationName, amount]) => (
+              <p key={denomationName}>
+                {denomationName} : {amount.toFixed(2)}
+              </p>
+            ))}
           </div>
         </div>
         <div className="bottom-register">

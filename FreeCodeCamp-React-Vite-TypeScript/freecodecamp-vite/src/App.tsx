@@ -38,6 +38,11 @@ function App() {
                 Api Pokemon
               </Link>
             </li>
+            <li className="category-item">
+              <Link className="category-link" to="/ApiSongoku">
+                API SonGoku
+              </Link>
+            </li>
           </ul>
         </aside>
         <section className="content">
@@ -47,6 +52,7 @@ function App() {
             <Route path="/telephone" element={<Telephone />} />
             <Route path="/cash" element={<Cash />} />
             <Route path="/ApiPokemon" element={<Pokemon />} />
+            <Route path="/ApiSongoku" element={<Songo />} />
           </Routes>
         </section>
       </div>
