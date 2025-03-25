@@ -564,4 +564,50 @@ body {
   }
 }
 
+/* App Songoku */
+.Songoku {
+  width: 100%;
+}
+.Songoku .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.Songoku .header .logo {
+  width: 100px;
+}
+.Songoku .content {
+  display: flex;
+  text-align: center;
+  padding: 100px 0;
+}
+.Songoku .content .logo-container {
+  margin-bottom: 50px;
+}
+.Songoku .content .logo-container .main-logo {
+  width: 300px;
+}
+.Songoku .content .logo-container .api-text {
+  font-size: 24px;
+}
+.Songoku .content .search-bar {
+  display: flex;
+  justify-content: center;
+}
+.Songoku .content .search-bar .text {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  width: 300px;
+}
+.Songoku .content .search-bar .search-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=App.css.map */

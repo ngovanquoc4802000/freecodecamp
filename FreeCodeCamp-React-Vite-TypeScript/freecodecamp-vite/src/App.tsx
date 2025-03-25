@@ -6,6 +6,7 @@ import ParseInt from "../components/certificate-2-convert-parseInt-so-la-ma/pars
 import Telephone from "../components/certificate-3-number-telephone-validator/telephone";
 import Cash from "../components/certificate-4-cash-register/cash";
 import Pokemon from "../components/certificate-5-Api-Pokemon/Pokemon";
+import Songoku from "../components/certificate-6-API-7-vien-ngoc-rong/songoku";
 
 function App() {
   return (
@@ -52,7 +53,7 @@ function App() {
             <Route path="/telephone" element={<Telephone />} />
             <Route path="/cash" element={<Cash />} />
             <Route path="/ApiPokemon" element={<Pokemon />} />
-            <Route path="/ApiSongoku" element={<Songo />} />
+            <Route path="/ApiSongoku" element={<Songoku />} />
           </Routes>
         </section>
       </div>
