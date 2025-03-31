@@ -1,5 +1,6 @@
 import { SetStateAction, useState } from "react";
 import ResultProps from "./resultProps";
+import React from "react";
 
 function Telephone() {
   const [value, setValue] = useState("");
@@ -14,24 +15,24 @@ function Telephone() {
       return;
     }
 
-    const countryCode = "^(1\\s?)?"; // prefix
-    const areaCode = "(\\([0-9]{3}\\)|[0-9]{3})";
-    const spacesDashes = "[\\s\\-]?";
-    const phoneNumber = "[0-9]{3}[\\s\\-]?[0-9]{4}$"; // $ là câu kết thúc cuối
-    const phoneRegex = new RegExp(
+    const countryCode:string = "^(1\\s?)?"; // prefix
+    const areaCode:string = "(\\([0-9]{3}\\)|[0-9]{3})";
+    const spacesDashes:string = "[\\s\\-]?";
+    const phoneNumber:string = "[0-9]{3}[\\s\\-]?[0-9]{4}$"; // $ là câu kết thúc cuối
+    const phoneRegex: RegExp = new RegExp(
       `${countryCode}${areaCode}${spacesDashes}${phoneNumber}`
     );
-    const isValid = phoneRegex.test(value);
+    const isValid : boolean = phoneRegex.test(value);
     setIsValid(isValid);
     setInputValue(value);
   };
   const handleCheckBtn = () => {
     checkInput(value);
   };
-  const handleReset = () => {
+const handleReset = () => {
     setValue("");
     setInputValue("");
-  }
+  };
   return (
     <main className="telephone">
       <img

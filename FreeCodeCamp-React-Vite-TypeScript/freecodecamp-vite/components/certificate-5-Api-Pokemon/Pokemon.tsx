@@ -24,34 +24,37 @@ function Pokemon() {
   const [inputValue, setInputValue] = useState<string>("");
   const [pokemonData, setPokemonData] = useState<PokemonData | null>(null);
   const [error, setError] = useState<string | null>(null);
-    const getApiPokemon = async () => {
-      try {
-        setError(null);
-        const response = await fetch(
-          `https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${inputValue.toLowerCase()}`
-        );
 
-        if (!response.ok) {
-          throw new Error("Pokemon not found");
-        }
+  const getApiPokemon = async () => {
+    try {
+      setError(null);
+      const response = await fetch(
+        `https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${inputValue.toLowerCase()}`
+      );
 
-        const data: PokemonData = await response.json();
-        setPokemonData(data);
-        
-      } catch (err) {
-        console.log(err);
-        setError(error);
-        setPokemonData(null);
+      if (!response.ok) {
+        throw new Error("Pokemon not found");
       }
-    };
+
+      const data: PokemonData = await response.json();
+      setPokemonData(data);
+    } catch (err) {
+      console.log(err);
+      setError(error);
+      setPokemonData(null);
+    }
+  };
+  
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
+
   useEffect(() => {
     if (inputValue) {
       getApiPokemon();
-    };
+    }
   }, [inputValue]);
+
   return (
     <main className="pokemon">
       <img

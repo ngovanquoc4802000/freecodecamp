@@ -33,7 +33,7 @@ function ParseInt() {
   };
 
   const checkInput = () => {
-    const check = value;
+    const check : number = value;
     numeric(value);
     if (!check || isNaN(check)) {
       numeric(value);
@@ -46,11 +46,11 @@ function ParseInt() {
   };
 
   const numeric = (value: number) => {
-    const keys = Object.keys(romanNumerals).reverse();
-    let result = "";
+    const keys : string[] = Object.keys(romanNumerals).reverse();
+    let result: string = "";
     for (let i = 0; i < keys.length; i++) {
-      const parse = parseInt(keys[i]);
-      const keyFonts = romanNumerals[parse];
+      const parse : number = parseInt(keys[i]);
+      const keyFonts:string = romanNumerals[parse];
 
       while (value >= parse) {
         result += keyFonts;
