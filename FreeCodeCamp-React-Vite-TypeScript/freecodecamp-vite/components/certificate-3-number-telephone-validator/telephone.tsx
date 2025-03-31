@@ -1,4 +1,4 @@
-import React, { SetStateAction, useState } from "react";
+import { SetStateAction, useState } from "react";
 import ResultProps from "./resultProps";
 
 function Telephone() {

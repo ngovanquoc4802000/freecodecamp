@@ -1,0 +1,140 @@
+/* App Pokemon */
+.pokemon {
+  color: #0a0a23;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.pokemon .freecodecamp-logo {
+  height: 30px;
+  margin: 25px 0;
+}
+.pokemon h1 {
+  font-size: 2rem;
+  color: #fff;
+}
+.pokemon .container {
+  margin: 25px 0;
+  background-color: #f5f6f7;
+  border: 1px solid #f5f6f7;
+  border-radius: 15px;
+  box-shadow: 10px 10px 0px 0px rgba(223, 220, 220, 0.75);
+}
+.pokemon .container #search-form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 10px 0;
+  padding: 5px;
+  border-radius: 8px 8px 0 0;
+  gap: 10px;
+}
+.pokemon .container #search-form label {
+  align-self: center;
+}
+.pokemon .container #search-form #search-input {
+  height: 40px;
+  padding-left: 10px;
+  width: 200px;
+}
+.pokemon .container #search-form #search-button {
+  padding: 14px 0;
+  width: 80px;
+  border-radius: 20px;
+  text-align: center;
+  background-color: #7f21ab;
+  color: #f5f6f7;
+  border: none;
+}
+.pokemon .container .output {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  padding: 5px;
+  flex-direction: column;
+  align-items: center;
+}
+.pokemon .container .output .top-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 325px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f0f1f7;
+}
+.pokemon .container .output .top-container .name-and-id {
+  height: 28px;
+  font-size: 1.1em;
+  text-transform: capitalize;
+  margin-bottom: 5px;
+}
+.pokemon .container .output .top-container .size {
+  height: 22px;
+  font-size: 0.85rem;
+}
+.pokemon .container .output .top-container .sprite-container {
+  flex-grow: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pokemon .container .output .top-container #types {
+  min-height: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 5px;
+}
+.pokemon .container .output .bottom-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 325px;
+}
+.pokemon .container .output .bottom-container table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  font-size: 1 rem;
+  color: #f5f6f7;
+  background-color: #7f21ab;
+}
+.pokemon .container .output .bottom-container table tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  unicode-bidi: isolate;
+  border-color: inherit;
+}
+.pokemon .container .output .bottom-container table tbody tr {
+  border-bottom: 5px solid #f5f6f7;
+}
+.pokemon .container .output .bottom-container table tbody tr td,
+.pokemon .container .output .bottom-container table tbody tr th {
+  text-align: center;
+  padding: 8px;
+}
+.pokemon .container .output .bottom-container table tbody tr th:nth-child(even),
+.pokemon .container .output .bottom-container table tbody tr td:nth-child(even) {
+  border-left: 5px solid #f5f6f7;
+}
+.pokemon .container #sprite {
+  width: 180px;
+}
+@media screen and (min-width: 550px) {
+  .pokemon .container .container {
+    width: 450px;
+  }
+}
+@media screen and (min-width: 550px) {
+  .pokemon .container #search-form,
+  .pokemon .container .top-container,
+  .pokemon .container .bottom-container {
+    width: 95%;
+  }
+}
+
+/*# sourceMappingURL=pokemon.css.map */

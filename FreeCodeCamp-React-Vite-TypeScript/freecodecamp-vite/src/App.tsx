@@ -1,13 +1,11 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router";
-import "./App.css";
 import "../components/certificate-1-Palindrome/padindrome";
 import Palindrome from "../components/certificate-1-Palindrome/padindrome";
 import ParseInt from "../components/certificate-2-convert-parseInt-so-la-ma/parseInt";
 import Telephone from "../components/certificate-3-number-telephone-validator/telephone";
 import Cash from "../components/certificate-4-cash-register/cash";
 import Pokemon from "../components/certificate-5-Api-Pokemon/Pokemon";
-import Songoku from "../components/certificate-6-API-7-vien-ngoc-rong/songoku";
-
+import "./App.css";
 function App() {
   return (
     <BrowserRouter>
@@ -39,11 +37,6 @@ function App() {
                 Api Pokemon
               </Link>
             </li>
-            <li className="category-item">
-              <Link className="category-link" to="/ApiSongoku">
-                API SonGoku
-              </Link>
-            </li>
           </ul>
         </aside>
         <section className="content">
@@ -53,7 +46,6 @@ function App() {
             <Route path="/telephone" element={<Telephone />} />
             <Route path="/cash" element={<Cash />} />
             <Route path="/ApiPokemon" element={<Pokemon />} />
-            <Route path="/ApiSongoku" element={<Songoku />} />
           </Routes>
         </section>
       </div>

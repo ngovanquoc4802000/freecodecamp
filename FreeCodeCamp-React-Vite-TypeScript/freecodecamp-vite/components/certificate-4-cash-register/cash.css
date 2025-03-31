@@ -1,0 +1,119 @@
+/* App Cash */
+.cash {
+  --light-gray: #dfdfe2;
+  --dark-blue: #0a0a23;
+  background-color: var(--dark-blue);
+  color: var(--light-gray);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 40px 10px;
+}
+.cash .freecodecamp-logo {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 20px;
+}
+.cash h1 {
+  font-size: 2.5rem;
+  margin: 20px 0;
+  text-align: center;
+}
+.cash #change-due {
+  text-align: left;
+  font-size: 1.2rem;
+}
+.cash .input-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 10px 0 20px;
+}
+.cash .input-div label {
+  font-size: 18px;
+}
+.cash .input-div .user-input {
+  height: 30px;
+  padding: 10px;
+  margin: 10px;
+  font-size: 15px;
+}
+.cash .input-div .check-btn-styles {
+  cursor: pointer;
+  width: 100px;
+  height: 30px;
+  margin: 10px;
+  color: #0a0a23;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #feac32;
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  border-color: #feac32;
+  border-width: 3px;
+}
+.cash .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cash .container .price-screen {
+  border: 10px solid #99c9ff;
+  background-color: black;
+  height: 50px;
+  width: 200px;
+  margin-left: -40px;
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.cash .container .connector {
+  margin-left: -20px;
+  background-color: #99c9ff;
+  height: 30px;
+  width: 40px;
+}
+.cash .container .top-register {
+  display: flex;
+  justify-content: space-around;
+  border-radius: 35px 35px 0 0;
+  padding-top: 20px;
+  background-color: #99c9ff;
+  height: 250px;
+  width: 325px;
+}
+.cash .container .top-register .btns-container {
+  width: 25%;
+}
+.cash .container .top-register .btns-container .btn {
+  border-radius: 10%;
+  border: none;
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  margin: 2px;
+}
+.cash .container .top-register #cash-drawer-display {
+  font-size: 1.1rem;
+  background-color: white;
+  width: 58%;
+  height: 100%;
+  color: black;
+  padding: 8px;
+}
+.cash .container .bottom-register {
+  background-color: #99c9ff;
+  height: 50px;
+  width: 325px;
+  margin-top: 10px;
+}
+
+/*# sourceMappingURL=cash.css.map */

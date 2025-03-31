@@ -8,8 +8,9 @@ end
 */
 
 function Palindrome() {
-  const [value, setValue] = useState("");
-  const [showResult, setShowResult] = useState("");
+  const [value, setValue] = useState<string>("");
+  const [showResult, setShowResult] = useState<string>("");
+  const [isPalindrome, setIsPalindrome] = useState<boolean | null>(null); // lưu trữ kết quả boolean của kiểm tra 
 
   const cleanInputString = (str: string) => {
     const regex = /[^a-zA-z0-9]/g;
@@ -20,19 +21,22 @@ function Palindrome() {
     target: { value: React.SetStateAction<string> };
   }) => {
     setValue(e.target.value);
+    setIsPalindrome(null);
   };
 
   const handleClick = () => {
     if (value === "") {
-      return alert("Please input");
+      alert("Please input");
+      return;
     }
 
-    const inputValue = cleanInputString(value).toLocaleLowerCase();
-    const upstream = inputValue.split("").reverse().join("");
-    const check =
-      inputValue === upstream
-        ? setShowResult(`${value} is a palindrome`)
-        : setShowResult(`${value} is not a palindrome`);
+    const inputValue: string = cleanInputString(value).toLocaleLowerCase();
+    const upstream: string = inputValue.split("").reverse().join("");
+    const check: boolean = inputValue === upstream;
+    setIsPalindrome(check);
+    setShowResult(
+      check ? `${value} is a palindrome` : `${value} is not a palindrome`
+    );
     return check;
   };
   return (
@@ -58,7 +62,13 @@ function Palindrome() {
           Check
         </button>
         <div
-          style={{ color: "red", fontWeight: "bold" }}
+          style={
+            isPalindrome === null
+              ? { color: "black" }
+              : isPalindrome
+              ? { color: "green" }
+              : { color: "red" }
+          }
           className="results-div"
           id="result"
         >

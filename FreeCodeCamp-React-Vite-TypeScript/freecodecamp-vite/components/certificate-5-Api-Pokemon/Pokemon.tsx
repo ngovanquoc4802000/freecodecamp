@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 interface PokemonData {
   name: string;
@@ -24,31 +24,34 @@ function Pokemon() {
   const [inputValue, setInputValue] = useState<string>("");
   const [pokemonData, setPokemonData] = useState<PokemonData | null>(null);
   const [error, setError] = useState<string | null>(null);
+    const getApiPokemon = async () => {
+      try {
+        setError(null);
+        const response = await fetch(
+          `https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${inputValue.toLowerCase()}`
+        );
 
-  const getApiPokemon = async () => {
-    try {
-      setError(null);
-      const response = await fetch(
-        `https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${inputValue.toLowerCase()}`
-      );
+        if (!response.ok) {
+          throw new Error("Pokemon not found");
+        }
 
-      if (!response.ok) {
-        throw new Error("Pokemon not found");
+        const data: PokemonData = await response.json();
+        setPokemonData(data);
+        
+      } catch (err) {
+        console.log(err);
+        setError(error);
+        setPokemonData(null);
       }
-
-      const data: PokemonData = await response.json();
-      setPokemonData(data);
-      console.log(data);
-    } catch (err) {
-      setError(err.message || "An error occurred");
-      setPokemonData(null);
-    }
-  };
-
+    };
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
-
+  useEffect(() => {
+    if (inputValue) {
+      getApiPokemon();
+    };
+  }, [inputValue]);
   return (
     <main className="pokemon">
       <img

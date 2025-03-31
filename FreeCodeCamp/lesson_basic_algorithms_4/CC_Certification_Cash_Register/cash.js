@@ -145,7 +145,6 @@ const checkInput = () => {
 purchaseBtn.addEventListener("click", () => {
   checkCashRegister();
 });
-
 cash.addEventListener("keydown", (e) => {
   if (e.key === "enter") {
     checkInput();

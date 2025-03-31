@@ -1,0 +1,76 @@
+/* App palindrome */
+.container-palindrome {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.container-palindrome .freecodecamp-logo {
+  height: 30px;
+  margin-bottom: 20px;
+}
+.container-palindrome .palindrome-div {
+  width: min(100vw, 450px);
+  min-height: 100px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  margin: 10px 0;
+  background-color: white;
+  box-shadow: 0 6px 6px #002ead;
+}
+.container-palindrome .palindrome-div label {
+  color: #0a0a23;
+  margin-bottom: 20px;
+}
+.container-palindrome .palindrome-div .palindrome-input {
+  height: 30px;
+  width: 250px;
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 10px;
+  border: none;
+  border-bottom: 2px solid #5a01a7;
+}
+.container-palindrome .palindrome-div #check-btn {
+  width: 90px;
+  border: none;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #5a01a7;
+  color: #fff;
+  cursor: pointer;
+}
+.container-palindrome .palindrome-div .result-div {
+  overflow-y: auto;
+  word-wrap: break-word;
+  min-height: 50px;
+  color: black;
+}
+.container-palindrome .palindrome-definition-div {
+  width: min(100vw, 450px);
+  font-size: 1.3rem;
+  min-height: 140px;
+  background-color: #00471b;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container-palindrome .palindrome-definition-div .palindrome-definition {
+  vertical-align: middle;
+  text-align: center;
+}
+.container-palindrome .palindrome-definition-div #value {
+  color: black;
+}
+
+/*# sourceMappingURL=palindrome.css.map */
