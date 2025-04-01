@@ -1,3 +1,4 @@
+import React from "react";
 import { ChangeEvent, useEffect, useState } from "react";
 
 interface PokemonData {
@@ -22,7 +23,9 @@ interface PokemonData {
 
 function Pokemon() {
   const [inputValue, setInputValue] = useState<string>("");
+
   const [pokemonData, setPokemonData] = useState<PokemonData | null>(null);
+  
   const [error, setError] = useState<string | null>(null);
 
   const getApiPokemon = async () => {

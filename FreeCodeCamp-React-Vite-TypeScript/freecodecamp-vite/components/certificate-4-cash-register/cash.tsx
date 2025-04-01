@@ -1,4 +1,5 @@
 /* eslint-disable prefer-const */
+import React from "react";
 import { useState } from "react";
 type CurrencyUnit = [string, number];
 
@@ -29,30 +30,39 @@ const currencyMap: Record<string, number> = {
 };
 
 const price: number = 3.26;
+
 function CashRegister() {
   const [value, setValue] = useState<string>("");
+
   const [cid, setCid] = useState<CurrencyUnit[]>(initialCid);
+
   const [changeMessage, setChangeMessage] = useState<string>("");
 
   const handlePurchase = () => {
     const cashInCents: number = Math.round(Number(value) * 100);
+
     const priceInCents: number = Math.round(price * 100);
+
     if (cashInCents < priceInCents) {
       setChangeMessage(
         "Customer does not have enough money to purchase the item"
       );
       return;
     }
+
     if (cashInCents === priceInCents) {
       setChangeMessage("No change due - customer paid with exact cash");
       return;
     }
+
     let changeDueAmount: number = cashInCents - priceInCents;
+
     const totalCid: number = cid.reduce(
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       (sum, [_, amount]) => sum + Math.round(amount * 100),
       0
     );
+
     if (totalCid < changeDueAmount) {
       setChangeMessage("Status: INSUFFICIENT_FUNDS");
       return;
@@ -63,28 +73,38 @@ function CashRegister() {
     const newCid: CurrencyUnit[] = [...cid].reverse();
     newCid.map(([denomination, amount]) => {
       const amountInCents: number = Math.round(amount * 100);
+
       const denomValue: number = currencyMap[denomination];
 
       const count: number = Math.min(
         Math.floor(changeDueAmount / denomValue),
         amountInCents / denomValue
       );
+
       const givenAmount: number = count * denomValue;
-      console.log(givenAmount)
+
+      console.log(givenAmount);
+
       changeDueAmount -= givenAmount;
-      if(changeDueAmount > 0) change.push([denomination,givenAmount / 100]);
-      return [denomination,(amountInCents - givenAmount) / 100] as [string, number];
+
+      if (changeDueAmount > 0) change.push([denomination, givenAmount / 100]);
+      return [denomination, (amountInCents - givenAmount) / 100] as [
+        string,
+        number
+      ];
     });
-        
-    if(changeDueAmount > 0) {
+
+    if (changeDueAmount > 0) {
       setChangeMessage("Status: INSUFFICIENT_FUNDS");
       return;
     }
-   
+
     setCid(newCid.reverse());
+
     setChangeMessage(`Status: OPEN
       ${change.map(([denom, amount]) => `${denom} : $${amount}`).join("\n")}`);
-    setValue("")
+
+    setValue("");
   };
   return (
     <main className="cash">

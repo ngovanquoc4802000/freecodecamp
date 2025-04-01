@@ -9,7 +9,9 @@ end
 
 function Palindrome() {
   const [value, setValue] = useState<string>("");
+
   const [showResult, setShowResult] = useState<string>("");
+
   const [isPalindrome, setIsPalindrome] = useState<boolean | null>(null); // lưu trữ kết quả boolean của kiểm tra 
 
   const cleanInputString = (str: string) => {
@@ -21,6 +23,7 @@ function Palindrome() {
     target: { value: React.SetStateAction<string> };
   }) => {
     setValue(e.target.value);
+
     setIsPalindrome(null);
   };
 
@@ -31,14 +34,19 @@ function Palindrome() {
     }
 
     const inputValue: string = cleanInputString(value).toLocaleLowerCase();
+
     const upstream: string = inputValue.split("").reverse().join("");
+
     const check: boolean = inputValue === upstream;
+
     setIsPalindrome(check);
+
     setShowResult(
       check ? `${value} is a palindrome` : `${value} is not a palindrome`
     );
     return check;
   };
+  
   return (
     <main className="container-palindrome">
       <img
